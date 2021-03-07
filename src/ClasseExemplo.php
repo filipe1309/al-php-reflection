@@ -8,7 +8,7 @@ class ClasseExemplo
     protected string $propriedadeProtegida = 'protegida';
     private string $propriedadePrivada = 'privada';
 
-    public function __construct()
+    public function __construct($param1, $param2)
     {
         echo 'Executando construtor de ' . __CLASS__;
     }
