@@ -6,6 +6,8 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 $reflectionClass = new ReflectionClass(ClasseExemplo::class);
 
+var_dump($reflectionClass->getMethods(ReflectionMethod::IS_PUBLIC | ReflectionMethod::IS_PROTECTED));
+
 // $interfaces = $reflectionClass->getInterfaceNames();
 // $interfaces = $reflectionClass->getInterfaces();
 
