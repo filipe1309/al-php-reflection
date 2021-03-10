@@ -9,12 +9,27 @@ $reflectionClass = new ReflectionClass(ClasseExemplo::class);
 // var_dump($reflectionClass->getMethods(ReflectionMethod::IS_PUBLIC | ReflectionMethod::IS_PROTECTED));
 $reflectionMethod = $reflectionClass->getMethod('metodoPublico');
 // var_dump($reflectionMethod->getNumberOfParameters(), $reflectionMethod->getNumberOfRequiredParameters());
-var_dump($reflectionMethod->getParameters());
+// var_dump($reflectionMethod->getParameters());
+$parameters = array_filter(
+  $reflectionMethod->getParameters(), 
+  fn (ReflectionParameter $param) => !$param->isOptional()
+);
+
+// var_dump($parameters);
+
+foreach ($parameters as $parameter) {
+  if (!$parameter->hasType()) {
+    throw new \DOmainException('Dont know what to do!!');
+  }
+
+  $tipo = (string) $parameter->getType();
+  var_dump($parameter->getType()->isBuiltin());
+}
 
 $objetoClasseExemplo = $reflectionClass->newInstanceWithoutConstructor();
 
 // $reflectionMethod->invoke($objetoClasseExemplo, 'Obrigado pelos peixes', 42);
-$reflectionMethod->invokeArgs($objetoClasseExemplo, ['Obrigado pelos peixes', 42]);
+// $reflectionMethod->invokeArgs($objetoClasseExemplo, ['Obrigado pelos peixes', 42]);
 
 
 // $interfaces = $reflectionClass->getInterfaceNames();
