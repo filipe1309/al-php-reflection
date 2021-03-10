@@ -9,10 +9,19 @@ $reflectionClass = new ReflectionClass(ClasseExemplo::class);
 // var_dump($reflectionClass->getProperties());
 $propriedadePrivada = $reflectionClass->getProperty('propriedadePrivada');
 // var_dump($propriedadePrivada);
-// var_dump(Reflection::getModifierNames($propriedadePrivada->getModifiers()));
+
+if (!$propriedadePrivada->isPublic()) {
+    $propriedadePrivada->setAccessible(true);
+}
+
 var_dump($propriedadePrivada->getValue($reflectionClass->newInstanceWithoutConstructor()));
+// var_dump(Reflection::getModifierNames($propriedadePrivada->getModifiers()));
 
 // ------------------------------------------- Methods: --------------------------------
+$reflectionMethod = $reflectionClass->getMethod('metodoProtegido');
+$reflectionMethod->setAccessible(true);
+var_dump($reflectionMethod->invoke($reflectionClass->newInstanceWithoutConstructor()));
+
 /*
 // var_dump($reflectionClass->getMethods(ReflectionMethod::IS_PUBLIC | ReflectionMethod::IS_PROTECTED));
 $reflectionMethod = $reflectionClass->getMethod('metodoPublico');
