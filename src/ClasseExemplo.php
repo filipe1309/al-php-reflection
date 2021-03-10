@@ -13,9 +13,9 @@ final class ClasseExemplo implements \JsonSerializable
         echo 'Executando construtor de ' . __CLASS__;
     }
 
-    public function metodoPublico(): void
+    public function metodoPublico($mensagem, $num): void
     {
-        echo 'Executando método público';
+        echo 'Executando método público: ' . $mensagem . ', ' .  $num;
     }
 
     protected function metodoProtegido(): int
