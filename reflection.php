@@ -6,6 +6,10 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 $reflectionClass = new ReflectionClass(ClasseExemplo::class);
 
+var_dump($reflectionClass->getProperties());
+
+// ------------------------------------------- Methods: --------------------------------
+/*
 // var_dump($reflectionClass->getMethods(ReflectionMethod::IS_PUBLIC | ReflectionMethod::IS_PROTECTED));
 $reflectionMethod = $reflectionClass->getMethod('metodoPublico');
 // var_dump($reflectionMethod->getNumberOfParameters(), $reflectionMethod->getNumberOfRequiredParameters());
@@ -50,3 +54,4 @@ $objetoClasseExemplo = $reflectionClass->newInstanceWithoutConstructor();
 // var_dump($objetoClasseExemplo);
 
 // echo json_encode($objetoClasseExemplo);
+*/
