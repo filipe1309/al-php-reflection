@@ -6,7 +6,11 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 $reflectionClass = new ReflectionClass(ClasseExemplo::class);
 
-var_dump($reflectionClass->getProperties());
+// var_dump($reflectionClass->getProperties());
+$propriedadePrivada = $reflectionClass->getProperty('propriedadePrivada');
+// var_dump($propriedadePrivada);
+// var_dump(Reflection::getModifierNames($propriedadePrivada->getModifiers()));
+var_dump($propriedadePrivada->getValue($reflectionClass->newInstanceWithoutConstructor()));
 
 // ------------------------------------------- Methods: --------------------------------
 /*
