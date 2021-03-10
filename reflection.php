@@ -8,6 +8,8 @@ $reflectionClass = new ReflectionClass(ClasseExemplo::class);
 
 // var_dump($reflectionClass->getMethods(ReflectionMethod::IS_PUBLIC | ReflectionMethod::IS_PROTECTED));
 $reflectionMethod = $reflectionClass->getMethod('metodoPublico');
+// var_dump($reflectionMethod->getNumberOfParameters(), $reflectionMethod->getNumberOfRequiredParameters());
+var_dump($reflectionMethod->getParameters());
 
 $objetoClasseExemplo = $reflectionClass->newInstanceWithoutConstructor();
 
