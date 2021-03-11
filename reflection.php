@@ -6,6 +6,10 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 $reflectionClass = new ReflectionClass(ClasseExemplo::class);
 
+$propriedadePublica = $reflectionClass->getProperty('propriedadePublica');
+var_dump($propriedadePublica->getDocComment());
+
+
 // var_dump($reflectionClass->getProperties());
 $propriedadePrivada = $reflectionClass->getProperty('propriedadePrivada');
 // var_dump($propriedadePrivada);
@@ -18,9 +22,14 @@ var_dump($propriedadePrivada->getValue($reflectionClass->newInstanceWithoutConst
 // var_dump(Reflection::getModifierNames($propriedadePrivada->getModifiers()));
 
 // ------------------------------------------- Methods: --------------------------------
-$reflectionMethod = $reflectionClass->getMethod('metodoProtegido');
-$reflectionMethod->setAccessible(true);
-var_dump($reflectionMethod->invoke($reflectionClass->newInstanceWithoutConstructor()));
+$reflectionMethod = $reflectionClass->getMethod('metodoPublico');
+var_dump($reflectionMethod->getDocComment());
+
+
+
+// $reflectionMethod = $reflectionClass->getMethod('metodoProtegido');
+// $reflectionMethod->setAccessible(true);
+// var_dump($reflectionMethod->invoke($reflectionClass->newInstanceWithoutConstructor()));
 
 /*
 // var_dump($reflectionClass->getMethods(ReflectionMethod::IS_PUBLIC | ReflectionMethod::IS_PROTECTED));
